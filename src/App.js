@@ -11,6 +11,7 @@ import {
 } from './components/constantes/constants'
 import Main from './components/Main'
 import Auth from './components/Auth'
+import Header from './components/Header'
 
 function App() {
   return (
@@ -19,10 +20,10 @@ function App() {
         <Main />
       </Route>
       <Route path={ABOUT_ROUTE}>
-        <About />
+        <Main />
       </Route>
       <Route path={CATEGORIES_ROUTE}>
-        <Categories />
+        <Main />
       </Route>
       <Route path={SIGN_IN_ROUTE}>
         <Auth />
