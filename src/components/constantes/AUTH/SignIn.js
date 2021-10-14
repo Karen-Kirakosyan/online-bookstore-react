@@ -69,9 +69,9 @@ export default function SignIn() {
   const onSignup = () => {
     history.push(SIGN_UP_ROUTE)
   }
-  const onClickSignupLink = () => {
-    history.push(SIGN_UP_ROUTE)
-  }
+  //   const onClickSignupLink = () => {
+  //     history.push(SIGN_UP_ROUTE)
+  //   }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -138,9 +138,9 @@ export default function SignIn() {
               </Link>
             </Grid>
             <Grid item>
-              <Link onClick={onClickSignupLink} href="#" variant="body2">
+              {/* <Link onClick={onClickSignupLink} href="#" variant="body2">
                 {"Don't have an account? Sign Up"}
-              </Link>
+              </Link> */}
             </Grid>
           </Grid>
         </form>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
@@ -11,7 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined'
-import { Button, TextField } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import {
   HOME_ROUTE,
@@ -21,7 +21,6 @@ import {
   SIGN_UP_ROUTE,
 } from './constantes/constants'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import SearchIcon from '@material-ui/icons/Search'
 
 const drawerWidth = 240
 
@@ -31,13 +30,14 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     justifyContent: 'space-between',
+
     justifyContentjustifyContent: 'space-between',
     background: 'linear-gradient(45deg, #FE6B8B 40%, #FF8E53 90%)',
     border: 5,
     justifyContent: 'center',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
-    height: 50,
+    height: 48,
     padding: '20px 50px',
     size: '200px',
     transition: theme.transitions.create(['margin', 'width'], {
@@ -57,10 +57,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 10,
     marginRight: 10,
     color: 'white',
-  },
-  buttonsSide: {
-    display: 'grid',
-    marginTop: '750px',
   },
   title: {
     flexGrow: 1,
@@ -91,21 +87,13 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     height: 48,
     padding: '20px 50px',
-    size: '400px',
-  },
-  buttonStile: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContentjustifyContent: 'space-between',
-    background: 'linear-gradient(45deg, #FE6B8B 40%, #FF8E53 90%)',
-    border: 5,
-    borderRadius: 15,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
-    height: 48,
-    padding: '20px 50px',
-    size: '150px',
-    margin: theme.spacing(0, 0, 1),
+    size: '200px',
+    // display: 'flex',
+    // alignItems: 'center',
+    // padding: theme.spacing(0, 1),
+    // // necessary for content to be below app bar
+    // ...theme.mixins.toolbar,
+    // justifyContent: 'flex-start',
   },
   content: {
     flexGrow: 1,
@@ -125,16 +113,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function Header() {
+export default function PersistentDrawerRight() {
   const classes = useStyles()
   const theme = useTheme()
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = React.useState(false)
 
   const history = useHistory()
-
   const onSignout = () => {
     localStorage.removeItem('token')
-    history.push(HOME_ROUTE)
+    history.push(SIGN_IN_ROUTE)
   }
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -144,18 +131,9 @@ function Header() {
     setOpen(false)
   }
 
-  const onSigin = () => {
-    history.push(SIGN_IN_ROUTE)
-  }
-
-  const onSigup = () => {
-    history.push(SIGN_UP_ROUTE)
-  }
-
   return (
     <div className={classes.root}>
       <CssBaseline />
-
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -163,8 +141,7 @@ function Header() {
         })}
       >
         <Toolbar className={classes.toolBar}>
-          <TextField label="  Search..." />
-          <SearchIcon />
+          {/* <h2 className={classes.h2}>Hend Libruary</h2> */}
 
           <Link className={classes.link} to={HOME_ROUTE}>
             Home
@@ -175,11 +152,9 @@ function Header() {
           <Link className={classes.link} to={CATEGORIES_ROUTE}>
             Categories
           </Link>
-          {localStorage.length === 1 && (
-            <ExitToAppOutlinedIcon onClick={onSignout}>
-              Sign Out
-            </ExitToAppOutlinedIcon>
-          )}
+          <ExitToAppOutlinedIcon onClick={onSignout}>
+            Sign Out
+          </ExitToAppOutlinedIcon>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -215,31 +190,9 @@ function Header() {
           </IconButton>
         </div>
         <Divider />
-        <div className={classes.buttonsSide}>
-          {localStorage.length !== 1 && (
-            <Button
-              onClick={onSigin}
-              variant="contained"
-              className={classes.buttonStile}
-            >
-              Sign In
-            </Button>
-          )}
-
-          {localStorage.length !== 1 && (
-            <Button
-              onClick={onSigup}
-              variant="contained"
-              className={classes.buttonStile}
-            >
-              Sign Up
-            </Button>
-          )}
-        </div>
+        <Button>sign in</Button>
         <Divider />
       </Drawer>
     </div>
   )
 }
-
-export default Header
