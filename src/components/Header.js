@@ -129,7 +129,7 @@ function Header() {
   const classes = useStyles()
   const theme = useTheme()
   const [open, setOpen] = useState(false)
-
+  const [searchOpen, setSearchOpen] = useState(false)
   const history = useHistory()
 
   const onSignout = () => {
@@ -152,6 +152,13 @@ function Header() {
     history.push(SIGN_UP_ROUTE)
   }
 
+  const onSearch = () => {
+    if (!searchOpen) {
+      setSearchOpen(true)
+      return
+    }
+    setSearchOpen(false)
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -163,8 +170,13 @@ function Header() {
         })}
       >
         <Toolbar className={classes.toolBar}>
-          <TextField label="  Search..." />
-          <SearchIcon />
+          {searchOpen === true && (
+            <TextField color="error" label="  Search..." />
+          )}
+          <Button>
+            {' '}
+            <SearchIcon style={{ color: 'white' }} onClick={onSearch} />{' '}
+          </Button>
 
           <Link className={classes.link} to={HOME_ROUTE}>
             Home
@@ -176,9 +188,14 @@ function Header() {
             Categories
           </Link>
           {localStorage.length === 1 && (
-            <ExitToAppOutlinedIcon onClick={onSignout}>
-              Sign Out
-            </ExitToAppOutlinedIcon>
+            <Button>
+              <ExitToAppOutlinedIcon
+                style={{ color: 'white' }}
+                onClick={onSignout}
+              >
+                Sign Out
+              </ExitToAppOutlinedIcon>{' '}
+            </Button>
           )}
           <IconButton
             color="inherit"
