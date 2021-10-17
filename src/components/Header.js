@@ -19,9 +19,11 @@ import {
   CATEGORIES_ROUTE,
   SIGN_IN_ROUTE,
   SIGN_UP_ROUTE,
+  BOOK_ROUTE,
 } from './constantes/constants'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import SearchIcon from '@material-ui/icons/Search'
+import logo from '../components/images/Logo.png'
 
 const drawerWidth = 240
 
@@ -53,14 +55,30 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginRight: drawerWidth,
   },
-  link: {
-    marginLeft: 10,
-    marginRight: 10,
-    color: 'white',
+  collectionsButton: {
+    backgroundColor: '#f2eff0;',
+    borderRadius: '10px',
+    padding: '5px',
+    marginTop: '10px',
+    fontSize: 'initial',
+    fontFamily: 'system-ui',
+    color: '#ff7e6e',
+    // display: 'flex',
+    // alignItems: 'center',
+    // justifyContentjustifyContent: 'space-between',
+    // background: 'linear-gradient(10deg, #FE6B8B 6%, #FF8E53 60%)',
+    // border: 5,
+    // borderRadius: 30,
+    // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    // color: 'white',
+    // height: 30,
+    // padding: '20px 50px',
+    // size: '50px',
+    // margin: theme.spacing(1, 1, 1),
   },
   buttonsSide: {
     display: 'grid',
-    marginTop: '750px',
+    marginTop: '495px',
   },
   title: {
     flexGrow: 1,
@@ -84,28 +102,34 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContentjustifyContent: 'space-between',
-    background: 'linear-gradient(45deg, #FE6B8B 40%, #FF8E53 90%)',
+    background: 'linear-gradient(10deg, #FE6B8B 0%, #FF8E53  0%)',
     border: 5,
     justifyContent: 'center',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
     height: 48,
-    padding: '20px 50px',
+    padding: '25px 50px',
     size: '400px',
   },
   buttonStile: {
     display: 'flex',
     alignItems: 'center',
     justifyContentjustifyContent: 'space-between',
-    background: 'linear-gradient(45deg, #FE6B8B 40%, #FF8E53 90%)',
+    background: 'linear-gradient(60deg, #FE6B8B 40%, #FF8E53 90%)',
     border: 5,
     borderRadius: 15,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
     height: 48,
     padding: '20px 50px',
-    size: '150px',
+    size: '200px',
     margin: theme.spacing(0, 0, 1),
+  },
+  logo: {
+    marginTop: '-60px',
+    height: '100px',
+    width: '300px',
+    marginInlineEnd: 'auto',
   },
   content: {
     flexGrow: 1,
@@ -151,6 +175,22 @@ function Header() {
   const onSigup = () => {
     history.push(SIGN_UP_ROUTE)
   }
+  const onHomeRoute = () => {
+    history.push(HOME_ROUTE)
+  }
+  const onAboutRoute = () => {
+    history.push(ABOUT_ROUTE)
+  }
+  const onCategoriesRoute = () => {
+    history.push(CATEGORIES_ROUTE)
+  }
+  const onBooksRoute = () => {
+    history.push(BOOK_ROUTE)
+  }
+
+  const logoClick = () => {
+    history.push(HOME_ROUTE)
+  }
 
   const onSearch = () => {
     if (!searchOpen) {
@@ -170,23 +210,17 @@ function Header() {
         })}
       >
         <Toolbar className={classes.toolBar}>
-          {searchOpen === true && (
-            <TextField color="error" label="  Search..." />
-          )}
+          <a className={classes.logo} href={HOME_ROUTE}>
+            {' '}
+            <img cursor="pointer" onClick={logoClick} alt="" src={logo} />{' '}
+          </a>
+
+          {searchOpen === true && <TextField label="  Search..." />}
+
           <Button>
             {' '}
             <SearchIcon style={{ color: 'white' }} onClick={onSearch} />{' '}
           </Button>
-
-          <Link className={classes.link} to={HOME_ROUTE}>
-            Home
-          </Link>
-          <Link className={classes.link} to={ABOUT_ROUTE}>
-            About
-          </Link>
-          <Link className={classes.link} to={CATEGORIES_ROUTE}>
-            Categories
-          </Link>
           {localStorage.length === 1 && (
             <Button>
               <ExitToAppOutlinedIcon
@@ -231,7 +265,22 @@ function Header() {
             )}
           </IconButton>
         </div>
-        <Divider />
+        <Button className={classes.collectionsButton} onClick={onHomeRoute}>
+          Home
+        </Button>
+        <Button className={classes.collectionsButton} onClick={onBooksRoute}>
+          Books
+        </Button>
+
+        <Button
+          className={classes.collectionsButton}
+          onClick={onCategoriesRoute}
+        >
+          Categories
+        </Button>
+        <Button className={classes.collectionsButton} onClick={onAboutRoute}>
+          About
+        </Button>
         <div className={classes.buttonsSide}>
           {localStorage.length !== 1 && (
             <Button

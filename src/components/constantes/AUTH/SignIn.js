@@ -60,6 +60,7 @@ export default function SignIn() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const history = useHistory()
+
   const onSignin = () => {
     if (username.length > 2 && password.length > 2) {
       localStorage.setItem('token', true)
