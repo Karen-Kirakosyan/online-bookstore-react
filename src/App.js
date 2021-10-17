@@ -8,6 +8,7 @@ import {
   CATEGORIES_ROUTE,
   SIGN_IN_ROUTE,
   SIGN_UP_ROUTE,
+  BOOK_ROUTE,
 } from './components/constantes/constants'
 import Main from './components/Main'
 import Auth from './components/Auth'
@@ -20,6 +21,9 @@ function App() {
         <Main />
       </Route>
       <Route path={ABOUT_ROUTE}>
+        <Main />
+      </Route>
+      <Route path={BOOK_ROUTE}>
         <Main />
       </Route>
       <Route path={CATEGORIES_ROUTE}>

@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles()
   const history = useHistory()
+
   const onClickSigninLink = () => {
     history.push(SIGN_IN_ROUTE)
   }

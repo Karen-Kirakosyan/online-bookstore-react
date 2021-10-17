@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   pic2: {
     borderRadius: '60px',
-    marginLeft: '1000px',
+    marginLeft: '850px',
 
     backgroundColor: 'white',
     boxShadow: '0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)',
