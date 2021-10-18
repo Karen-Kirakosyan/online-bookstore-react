@@ -56,6 +56,7 @@ function About() {
         <p className={classes.style}>
           {' '}
           <img
+            alt=""
             className={classes.pic1}
             src="https://www.caloundragardens.com.au/wp-content/uploads/2015/08/caloundra-libruary-sunshine-coast.jpg"
           />
@@ -86,6 +87,7 @@ function About() {
             eget velit aliquet lacus est non est.
           </p>
           <img
+            alt=""
             className={classes.pic2}
             src="https://m.media-amazon.com/images/I/61IW+00iCrL._AC_SL1001_.jpg"
           />
@@ -93,6 +95,7 @@ function About() {
         <div>
           <p className={classes.style}>
             <img
+              alt=""
               className={classes.pic1}
               src="https://t4.ftcdn.net/jpg/02/66/42/45/360_F_266424527_LFk3kmKVs6LpTDpU9edwkAK8J9UlVnrh.jpg"
             />

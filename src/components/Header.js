@@ -12,18 +12,20 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined'
 import { Button, TextField } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import SearchIcon from '@material-ui/icons/Search'
+import logo from '../components/images/Logo.png'
 import {
   HOME_ROUTE,
   ABOUT_ROUTE,
   CATEGORIES_ROUTE,
-  SIGN_IN_ROUTE,
-  SIGN_UP_ROUTE,
+  AUTH_ROUTE,
   BOOK_ROUTE,
 } from './constantes/constants'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import SearchIcon from '@material-ui/icons/Search'
-import logo from '../components/images/Logo.png'
+import fire from '../fire'
+import { useDispatch, useSelector } from 'react-redux'
+import { editSignPath } from '../redux/pathSlice'
+import { editHasAccount, selectHasAccount } from '../redux/hasAccountSlice'
 
 const drawerWidth = 240
 
@@ -63,18 +65,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 'initial',
     fontFamily: 'system-ui',
     color: '#ff7e6e',
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContentjustifyContent: 'space-between',
-    // background: 'linear-gradient(10deg, #FE6B8B 6%, #FF8E53 60%)',
-    // border: 5,
-    // borderRadius: 30,
-    // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    // color: 'white',
-    // height: 30,
-    // padding: '20px 50px',
-    // size: '50px',
-    // margin: theme.spacing(1, 1, 1),
   },
   buttonsSide: {
     display: 'grid',
@@ -155,10 +145,12 @@ function Header() {
   const [open, setOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const history = useHistory()
+  const hasAccount = useSelector(selectHasAccount)
+  const dispatch = useDispatch()
 
   const onSignout = () => {
-    localStorage.removeItem('token')
-    history.push(HOME_ROUTE)
+    fire.auth().signOut()
+    dispatch(editHasAccount(false))
   }
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -168,13 +160,16 @@ function Header() {
     setOpen(false)
   }
 
-  const onSigin = () => {
-    history.push(SIGN_IN_ROUTE)
+  const onSignin = () => {
+    dispatch(editSignPath('signin'))
+    history.push(AUTH_ROUTE)
   }
 
-  const onSigup = () => {
-    history.push(SIGN_UP_ROUTE)
+  const onSignup = () => {
+    dispatch(editSignPath('signup'))
+    history.push(AUTH_ROUTE)
   }
+
   const onHomeRoute = () => {
     history.push(HOME_ROUTE)
   }
@@ -221,7 +216,7 @@ function Header() {
             {' '}
             <SearchIcon style={{ color: 'white' }} onClick={onSearch} />{' '}
           </Button>
-          {localStorage.length === 1 && (
+          {hasAccount === true && (
             <Button>
               <ExitToAppOutlinedIcon
                 style={{ color: 'white' }}
@@ -246,7 +241,7 @@ function Header() {
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
-      ></main>
+      />
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -282,9 +277,9 @@ function Header() {
           About
         </Button>
         <div className={classes.buttonsSide}>
-          {localStorage.length !== 1 && (
+          {hasAccount === false && (
             <Button
-              onClick={onSigin}
+              onClick={onSignin}
               variant="contained"
               className={classes.buttonStile}
             >
@@ -292,9 +287,9 @@ function Header() {
             </Button>
           )}
 
-          {localStorage.length !== 1 && (
+          {hasAccount === false && (
             <Button
-              onClick={onSigup}
+              onClick={onSignup}
               variant="contained"
               className={classes.buttonStile}
             >
