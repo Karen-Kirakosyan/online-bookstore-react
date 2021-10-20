@@ -4,7 +4,12 @@ import pic from '../components/images/Background-1.png'
 import pic1 from '../components/images/book-pic.jpg'
 import pic2 from '../components/images/text.png'
 import DownState from './DownState'
+
 const useStyles = makeStyles((theme) => ({
+  display: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
   img: {
     marginTop: '10px',
     width: '1663px',
@@ -26,7 +31,7 @@ function Home() {
   const classes = useStyles()
   return (
     <>
-      <div>
+      <div className={classes.display}>
         <img alt="" className={classes.img} src={pic} />
         <div className={classes.imgs}>
           <img alt="" className={classes.pic1} src={pic1} />
