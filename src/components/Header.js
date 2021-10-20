@@ -11,9 +11,9 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined'
-import { Button, TextField } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import SearchIcon from '@material-ui/icons/Search'
+
 import logo from '../components/images/Logo.png'
 import {
   HOME_ROUTE,
@@ -143,7 +143,7 @@ function Header() {
   const classes = useStyles()
   const theme = useTheme()
   const [open, setOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
+
   const history = useHistory()
   const hasAccount = useSelector(selectHasAccount)
   const dispatch = useDispatch()
@@ -187,13 +187,6 @@ function Header() {
     history.push(HOME_ROUTE)
   }
 
-  const onSearch = () => {
-    if (!searchOpen) {
-      setSearchOpen(true)
-      return
-    }
-    setSearchOpen(false)
-  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -210,12 +203,6 @@ function Header() {
             <img cursor="pointer" onClick={logoClick} alt="" src={logo} />{' '}
           </a>
 
-          {searchOpen === true && <TextField label="  Search..." />}
-
-          <Button>
-            {' '}
-            <SearchIcon style={{ color: 'white' }} onClick={onSearch} />{' '}
-          </Button>
           {hasAccount === true && (
             <Button>
               <ExitToAppOutlinedIcon
