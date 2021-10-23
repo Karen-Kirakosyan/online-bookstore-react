@@ -1,29 +1,15 @@
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
-import pic from '../components/images/Background-1.png'
-import pic1 from '../components/images/book-pic.jpg'
-import pic2 from '../components/images/text.png'
-import DownState from './DownState'
+import pic from '../components/images/1.jpg'
+import pic1 from '../components/images/2.jpg'
 
+import DownState from './DownState'
+import Container from '@material-ui/core/Container'
 const useStyles = makeStyles((theme) => ({
   display: {
     display: 'flex',
     flexDirection: 'column',
-  },
-  img: {
-    marginTop: '10px',
-    width: '1663px',
-    height: '760px',
-  },
-  pic1: {
-    width: '800px',
-    marginTop: '35px',
-  },
-  imgs: {
-    display: 'flex',
-  },
-  pic2: {
-    width: '820px',
+    marginTop: '15px',
   },
 }))
 
@@ -31,14 +17,14 @@ function Home() {
   const classes = useStyles()
   return (
     <>
-      <div className={classes.display}>
-        <img alt="" className={classes.img} src={pic} />
-        <div className={classes.imgs}>
+      <Container maxWidth="80%">
+        <div className={classes.display}>
+          <img alt="" className={classes.img} src={pic} />
+
           <img alt="" className={classes.pic1} src={pic1} />
-          <img alt="" className={classes.pic2} src={pic2} />
         </div>
-        <DownState />
-      </div>
+      </Container>
+      <DownState />
     </>
   )
 }

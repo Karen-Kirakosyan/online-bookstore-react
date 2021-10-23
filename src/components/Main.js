@@ -2,11 +2,11 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import About from './About.js'
 import Home from './Home'
-import Categories from './Categories'
+import News from './News'
 import {
   HOME_ROUTE,
   ABOUT_ROUTE,
-  CATEGORIES_ROUTE,
+  NEWS_ROUTE,
   BOOK_ROUTE,
 } from './constantes/constants'
 import Header from './Header'
@@ -26,8 +26,8 @@ function Main() {
         <Route path={BOOK_ROUTE}>
           <Book />
         </Route>
-        <Route path={CATEGORIES_ROUTE}>
-          <Categories />
+        <Route path={NEWS_ROUTE}>
+          <News />
         </Route>
         <Redirect to={HOME_ROUTE} />
       </Switch>
