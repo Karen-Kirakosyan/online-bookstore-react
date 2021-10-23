@@ -11,7 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined'
-import { Button } from '@material-ui/core'
+import { Button, Container } from '@material-ui/core'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 import logo from '../components/images/Logo.png'
@@ -262,43 +262,45 @@ function Header() {
             )}
           </IconButton>
         </div>
-        <img alt="" className={classes.logo2} src={logo2} />
-        <p className={classes.text}>Find your favorit book hear</p>
-        <Button className={classes.collectionsButton} onClick={onHomeRoute}>
-          Home
-        </Button>
-        <Button className={classes.collectionsButton} onClick={onBooksRoute}>
-          Books
-        </Button>
+        <Container fixed style={{ display: 'flex', flexDirection: 'column' }}>
+          <img alt="" className={classes.logo2} src={logo2} />
+          <p className={classes.text}>Find your favorit book hear</p>
+          <Button className={classes.collectionsButton} onClick={onHomeRoute}>
+            Home
+          </Button>
+          <Button className={classes.collectionsButton} onClick={onBooksRoute}>
+            Books
+          </Button>
 
-        <Button className={classes.collectionsButton} onClick={onNewsRoute}>
-          News
-        </Button>
-        <Button className={classes.collectionsButton} onClick={onAboutRoute}>
-          About
-        </Button>
+          <Button className={classes.collectionsButton} onClick={onNewsRoute}>
+            News
+          </Button>
+          <Button className={classes.collectionsButton} onClick={onAboutRoute}>
+            About
+          </Button>
 
-        <div className={classes.buttonsSide}>
-          {hasAccount === false && (
-            <Button
-              onClick={onSignin}
-              variant="contained"
-              className={classes.buttonStile}
-            >
-              Sign In
-            </Button>
-          )}
+          <div className={classes.buttonsSide}>
+            {hasAccount === false && (
+              <Button
+                onClick={onSignin}
+                variant="contained"
+                className={classes.buttonStile}
+              >
+                Sign In
+              </Button>
+            )}
 
-          {hasAccount === false && (
-            <Button
-              onClick={onSignup}
-              variant="contained"
-              className={classes.buttonStile}
-            >
-              Sign Up
-            </Button>
-          )}
-        </div>
+            {hasAccount === false && (
+              <Button
+                onClick={onSignup}
+                variant="contained"
+                className={classes.buttonStile}
+              >
+                Sign Up
+              </Button>
+            )}
+          </div>
+        </Container>
         <Divider />
       </Drawer>
     </div>

@@ -46,36 +46,39 @@ export default function Auth(props) {
 
   return (
     <>
-      <div class="bold-line"></div>
-      <div class="container">
-        <div class="window">
-          <div class="overlay"></div>
-          <div class="content">
-            <div class="welcome">Hello There!</div>
-            <div class="subtitle">
-              We're almost done. Before using our services you need to Sign in.
-            </div>
-            <div class="input-fields">
-              <input
-                type="email"
-                placeholder="Email"
-                class="input-line full-width"
-                onChange={onEmailType}
-              ></input>
-              <span>{emailError}</span>
-              <input
-                type="password"
-                placeholder="Password"
-                class="input-line full-width"
-                onChange={onPasswordType}
-              ></input>
-              <span>{passwordError}</span>
-            </div>
-            <div class="spacing" onClick={() => history.push(SIGN_UP_ROUTE)}>
-              Don't have an account?<span class="highlight">Sign Up</span>
-            </div>
-            <div onClick={handleLogin}>
-              <button class="ghost-round full-width">Sign In</button>
+      <div>
+        <div class="bold-line"></div>
+        <div class="container">
+          <div class="window">
+            <div class="overlay"></div>
+            <div class="content">
+              <div class="welcome">Hello There!</div>
+              <div class="subtitle">
+                We're almost done. Before using our services you need to Sign
+                in.
+              </div>
+              <div class="input-fields">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  class="input-line full-width"
+                  onChange={onEmailType}
+                ></input>
+                <span>{emailError}</span>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  class="input-line full-width"
+                  onChange={onPasswordType}
+                ></input>
+                <span>{passwordError}</span>
+              </div>
+              <div class="spacing" onClick={() => history.push(SIGN_UP_ROUTE)}>
+                Don't have an account?<span class="highlight">Sign Up</span>
+              </div>
+              <div onClick={handleLogin}>
+                <button class="ghost-round full-width">Sign In</button>
+              </div>
             </div>
           </div>
         </div>

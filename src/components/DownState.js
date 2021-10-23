@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core'
+import { Container, makeStyles } from '@material-ui/core'
 import React from 'react'
 import fbIcon from '../components/images/FB-icon.png'
 import instaIcon from '../components/images/Insta-icon.png'
@@ -32,21 +32,30 @@ const useStyles = makeStyles(() => ({
     size: '200px',
     marginTop: '20px',
   },
-  fbLogo: {
-    marginTop: '30px',
-    marginLeft: '1400px',
-  },
+
   instaLogo: {
-    marginLeft: '20px',
+    marginLeft: '15px',
   },
   logo: {
     marginTop: '-50px',
-    marginLeft: '20px',
+    marginLeft: '30px',
   },
   text: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: '10px',
     fontFamily: 'inherit',
-    fontSize: 'medium',
+    fontSize: 'large',
     marginLeft: '30px',
+  },
+  logos: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+  },
+  instaFb: {
+    marginRight: '150px',
+    marginTop: '15px',
   },
 }))
 
@@ -55,31 +64,33 @@ function DownState() {
 
   return (
     <div className={classes.header}>
-      <div>
-        <a href=" ">
-          {' '}
-          <img alt=" " className={classes.fbLogo} src={fbIcon} />
-        </a>
-        <a href=" ">
-          <img alt=" " className={classes.instaLogo} src={instaIcon} />
-        </a>
-        <img alt=" " className={classes.logo} src={logo} />
+      <div className={classes.logos}>
+        <img alt=" " className={classes.logo} src={logo} />{' '}
+        <div className={classes.instaFb}>
+          <a href=" ">
+            {' '}
+            <img alt=" " src={fbIcon} />
+          </a>
+          <a href=" ">
+            <img alt=" " src={instaIcon} className={classes.instaLogo} />
+          </a>
+        </div>
       </div>
       <div className={classes.text}>
-        <p>
+        <div>
           {' '}
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
-        </p>
-        <p>
+        </div>
+        <div>
           Lorem Ipsum has been the industry's standard dummy text ever since the
           1500s,
-        </p>
-        <p>
+        </div>
+        <div>
           {' '}
           when an unknown printer took a galley of type and scrambled it to make
           a type specimen book.
-        </p>{' '}
+        </div>{' '}
       </div>
 
       <div className={classes.downDate}>
