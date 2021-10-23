@@ -76,7 +76,7 @@ function Book() {
           <SearchIcon onClick={onSearch} />{' '}
         </Button>
       </div>
-      <Container maxWidth="70%" style={{ margin: '25px', textAlign: 'center' }}>
+      <Container maxWidth="80%" style={{ textAlign: 'center' }}>
         <h1>Bestsellers of this week</h1>
         <h2>According to NYT</h2>
         {filteredBooks.map((book) => {
