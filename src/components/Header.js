@@ -29,6 +29,7 @@ import fire from '../fire'
 import { useDispatch, useSelector } from 'react-redux'
 import { editSignPath } from '../redux/pathSlice'
 import { editHasAccount, selectHasAccount } from '../redux/hasAccountSlice'
+import { Link } from 'react-router-dom'
 
 const drawerWidth = 240
 
@@ -60,14 +61,12 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginRight: drawerWidth,
   },
-  collectionsButton: {
-    backgroundColor: '#f2eff0;',
-    borderRadius: '10px',
-    padding: '5px',
-    marginTop: '10px',
+  collectionLinks: {
+    color: 'white',
+    padding: 15,
     fontSize: 'initial',
-    fontFamily: 'system-ui',
-    color: '#ff7e6e',
+    marginTop: 'auto',
+    fontFamily: 'Roboto',
   },
   buttonsSide: {
     display: 'grid',
@@ -88,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   },
   toolBar: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
   },
   drawerHeader: {
     justifyContent: 'space-between',
@@ -105,23 +104,23 @@ const useStyles = makeStyles((theme) => ({
     size: '400px',
   },
   buttonStile: {
+    marginLeft: 'auto',
     display: 'flex',
     alignItems: 'center',
     justifyContentjustifyContent: 'space-between',
-    background: 'linear-gradient(60deg, #FE6B8B 40%, #FF8E53 90%)',
+    background: 'linear-gradient(60deg, #ff895c 40%, #FF8E53 90%)',
     border: 5,
     borderRadius: 15,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
-    height: 48,
-    padding: '20px 50px',
+    height: 40,
+    marginTop: 10,
     size: '200px',
 
     margin: theme.spacing(0, 0, 1),
   },
 
   logo: {
-    marginTop: '-60px',
     height: '100px',
     width: '300px',
     marginInlineEnd: 'auto',
@@ -154,12 +153,17 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginRight: 0,
   },
+  linksAndLogin: {
+    display: 'flex',
+
+    marginLeft: 'auto',
+  },
 }))
 
 function Header() {
   const classes = useStyles()
   const theme = useTheme()
-  const [open, setOpen] = useState(false)
+  // const [open, setOpen] = useState(false)
 
   const history = useHistory()
   const hasAccount = useSelector(selectHasAccount)
@@ -169,34 +173,34 @@ function Header() {
     fire.auth().signOut()
     dispatch(editHasAccount(false))
   }
-  const handleDrawerOpen = () => {
-    setOpen(true)
-  }
+  // const handleDrawerOpen = () => {
+  //   setOpen(true)
+  // }
 
-  const handleDrawerClose = () => {
-    setOpen(false)
-  }
+  // const handleDrawerClose = () => {
+  //   setOpen(false)
+  // }
 
   const onSignin = () => {
     history.push(SIGN_IN_ROUTE)
   }
 
-  const onSignup = () => {
-    history.push(SIGN_UP_ROUTE)
-  }
+  // const onSignup = () => {
+  //   history.push(SIGN_UP_ROUTE)
+  // }
 
-  const onHomeRoute = () => {
-    history.push(HOME_ROUTE)
-  }
-  const onAboutRoute = () => {
-    history.push(ABOUT_ROUTE)
-  }
-  const onNewsRoute = () => {
-    history.push(NEWS_ROUTE)
-  }
-  const onBooksRoute = () => {
-    history.push(BOOK_ROUTE)
-  }
+  // const onHomeRoute = () => {
+  //   history.push(HOME_ROUTE)
+  // }
+  // const onAboutRoute = () => {
+  //   history.push(ABOUT_ROUTE)
+  // }
+  // const onNewsRoute = () => {
+  //   history.push(NEWS_ROUTE)
+  // }
+  // const onBooksRoute = () => {
+  //   history.push(BOOK_ROUTE)
+  // }
 
   const logoClick = () => {
     history.push(HOME_ROUTE)
@@ -209,26 +213,55 @@ function Header() {
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
+          // [classes.appBarShift]: open,
         })}
       >
         <Toolbar className={classes.toolBar}>
-          <a className={classes.logo} href={HOME_ROUTE}>
+          <a href={HOME_ROUTE}>
             {' '}
-            <img cursor="pointer" onClick={logoClick} alt="" src={logo} />{' '}
+            <img
+              className={classes.logo}
+              cursor="pointer"
+              onClick={logoClick}
+              alt=""
+              src={logo}
+            />{' '}
           </a>
-
-          {hasAccount === true && (
-            <Button>
-              <ExitToAppOutlinedIcon
-                style={{ color: 'white' }}
-                onClick={onSignout}
+          <div className={classes.linksAndLogin}>
+            <Link className={classes.collectionLinks} to={HOME_ROUTE}>
+              Home
+            </Link>
+            <Link className={classes.collectionLinks} to={BOOK_ROUTE}>
+              Books
+            </Link>
+            <Link className={classes.collectionLinks} to={NEWS_ROUTE}>
+              News
+            </Link>
+            <Link className={classes.collectionLinks} to={ABOUT_ROUTE}>
+              About
+            </Link>{' '}
+            {hasAccount === false && (
+              <Button
+                onClick={onSignin}
+                variant="contained"
+                className={classes.buttonStile}
               >
-                Sign Out
-              </ExitToAppOutlinedIcon>{' '}
-            </Button>
-          )}
-          <IconButton
+                Log In
+              </Button>
+            )}
+            {hasAccount === true && (
+              <Button>
+                <ExitToAppOutlinedIcon
+                  style={{ color: 'white' }}
+                  onClick={onSignout}
+                >
+                  Sign Out
+                </ExitToAppOutlinedIcon>{' '}
+              </Button>
+            )}
+          </div>
+
+          {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="end"
@@ -236,71 +269,42 @@ function Header() {
             className={clsx(open && classes.hide)}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
         </Toolbar>
       </AppBar>
       <main
         className={clsx(classes.content, {
-          [classes.contentShift]: open,
+          // [classes.contentShift]: open,
         })}
       />
       <Drawer
         className={classes.drawer}
         variant="persistent"
         anchor="right"
-        open={open}
+        // open={open}
         classes={{
           paper: classes.drawerPaper,
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
+          <IconButton>
+            {/* {theme.direction === 'rtl' ? (
               <ChevronLeftIcon />
             ) : (
               <ChevronRightIcon />
-            )}
+            )} */}
           </IconButton>
         </div>
-        <Container fixed style={{ display: 'flex', flexDirection: 'column' }}>
+        {/* <Container fixed style={{ display: 'flex', flexDirection: 'column' }}>
           <img alt="" className={classes.logo2} src={logo2} />
           <p className={classes.text}>Find your favorit book hear</p>
-          <Button className={classes.collectionsButton} onClick={onHomeRoute}>
-            Home
-          </Button>
-          <Button className={classes.collectionsButton} onClick={onBooksRoute}>
-            Books
-          </Button>
 
-          <Button className={classes.collectionsButton} onClick={onNewsRoute}>
-            News
-          </Button>
-          <Button className={classes.collectionsButton} onClick={onAboutRoute}>
-            About
-          </Button>
+          <Button className={classes.collectionsButton}>Home</Button>
+          <Button className={classes.collectionsButton}>Books</Button>
 
-          <div className={classes.buttonsSide}>
-            {hasAccount === false && (
-              <Button
-                onClick={onSignin}
-                variant="contained"
-                className={classes.buttonStile}
-              >
-                Sign In
-              </Button>
-            )}
-
-            {hasAccount === false && (
-              <Button
-                onClick={onSignup}
-                variant="contained"
-                className={classes.buttonStile}
-              >
-                Sign Up
-              </Button>
-            )}
-          </div>
-        </Container>
+          <Button className={classes.collectionsButton}>News</Button>
+          <Button className={classes.collectionsButton}>About</Button>
+        </Container> */}
         <Divider />
       </Drawer>
     </div>
