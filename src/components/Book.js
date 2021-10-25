@@ -11,14 +11,16 @@ import Container from '@material-ui/core/Container'
 import './Books.css'
 import GetAppTwoToneIcon from '@material-ui/icons/GetAppTwoTone'
 import Serlector from './Selector'
-
+import { useSelector } from 'react-redux'
+import { SIGN_IN_ROUTE } from './constantes/constants'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { selectHasAccount } from '../redux/hasAccountSlice'
 const useStyles = makeStyles((theme) => ({
-  searchAndSelector: {
+  search: {
     display: 'flex',
-    justifyContent: 'space-between',
-    marginRight: '150px',
+    justifyContent: 'flex-end',
+    marginRight: '250px',
     marginTop: '60px',
-    marginLeft: '150px',
   },
   textField: {
     marginLeft: 'auto',
@@ -31,6 +33,8 @@ function Book() {
   const [searchValue, setSearchValue] = useState('')
   const [filteredBooks, setFilteredBooks] = useState([])
   const classes = useStyles()
+  const hasAccount = useSelector(selectHasAccount)
+  const history = useHistory()
   useEffect(() => {
     const fetchBooks = async () => {
       const res = await axios.get(
@@ -57,13 +61,19 @@ function Book() {
     }
     setSearchOpen(false)
   }
+  const onDownload = () => {
+    if (!hasAccount) {
+      history.push(SIGN_IN_ROUTE)
+      return
+    }
+  }
 
   return (
     <>
       <Header />
 
-      <div className={classes.searchAndSelector}>
-        <Serlector />{' '}
+      <div className={classes.search}>
+        {' '}
         {searchOpen === true && (
           <TextField
             className={classes.textField}
@@ -80,8 +90,15 @@ function Book() {
         <h1>Bestsellers of this week</h1>
         <h2>According to NYT</h2>
         {filteredBooks.map((book) => {
-          const { author, book_image, description, publisher, title } = book
-
+          const {
+            author,
+            book_image,
+            buy_links,
+            description,
+            publisher,
+            title,
+          } = book
+          console.log(book)
           return (
             <>
               <div
@@ -95,7 +112,7 @@ function Book() {
                 <div class="card">
                   <div class="content">
                     <div class="front">
-                      <img src={book_image} />
+                      <img alt="" src={book_image} />
                     </div>
                     <div
                       class="back"
@@ -115,19 +132,17 @@ function Book() {
                         {description}
                       </p>
                       <div>
-                        <p
-                          style={{
-                            fontWeight: 'normal',
-                            fontSize: '14px',
-                            opacity: '0.7',
-                          }}
-                        >
-                          Download now
-                        </p>
-                        <Button>
-                          <a>
-                            <GetAppTwoToneIcon></GetAppTwoToneIcon>
-                          </a>
+                        <Button onClick={onDownload}>
+                          {' '}
+                          Download
+                          {hasAccount && (
+                            <a href={buy_links[0].url} target="_blank">
+                              <div>
+                                {' '}
+                                <GetAppTwoToneIcon> </GetAppTwoToneIcon>
+                              </div>
+                            </a>
+                          )}
                         </Button>
                       </div>
                     </div>
