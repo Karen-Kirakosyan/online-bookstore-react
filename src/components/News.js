@@ -10,6 +10,11 @@ import './News.css'
 import { TramOutlined } from '@material-ui/icons'
 import SearchIcon from '@material-ui/icons/Search'
 
+import newsLogo from '../components/images/newslogo.png'
+import { Link } from 'react-router-dom'
+import { HOME_ROUTE } from './constantes/constants'
+import FooterNews from './newsFooter'
+
 function News() {
   const [articles, setArticles] = useState([])
   const [term, setTerm] = useState('all')
@@ -73,50 +78,71 @@ function News() {
 
   return (
     <>
-      {loader()}
       <div class="header">
-        <div class="headerContainer">
-          <div class="header__inner">
-            <div style={{ display: 'flex', alignItems: 'self-end' }}>
-              <TextField
-                label="eg. technology "
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-              <SearchIcon
-                fontSize="medium"
-                onClick={onSearch}
-                style={{ paddingLeft: '5px', cursor: 'pointer' }}
-              >
-                Search
-              </SearchIcon>
-            </div>
-            <nav class="nav">
-              <a class="nav__link" href="#" onClick={() => setTerm('Latest')}>
-                Latest
-              </a>
-              <a class="nav__link" href="#" onClick={() => setTerm('Politics')}>
-                Politics{' '}
-              </a>
-              <a class="nav__link" href="#" onClick={() => setTerm('Economy')}>
-                Economy
-              </a>
-              <a class="nav__link" href="#" onClick={() => setTerm('Future')}>
-                Future
-              </a>
-              <a class="nav__link" href="#" onClick={() => setTerm('Culture')}>
-                Culture
-              </a>
-            </nav>
-          </div>
+        <img style={{ marginTop: '20px' }} alt="" src={newsLogo} />
+        <nav class="nav">
+          <Link class="nav__link" to={HOME_ROUTE}>
+            Home
+          </Link>
+          <a class="nav__link" href="#" onClick={() => setTerm('Latest')}>
+            Latest
+          </a>
+          <a class="nav__link" href="#" onClick={() => setTerm('Politics')}>
+            Politics{' '}
+          </a>
+          <a class="nav__link" href="#" onClick={() => setTerm('Economy')}>
+            Economy
+          </a>
+          <a class="nav__link" href="#" onClick={() => setTerm('Future')}>
+            Future
+          </a>
+          <a class="nav__link" href="#" onClick={() => setTerm('Culture')}>
+            Culture
+          </a>
+        </nav>
+        <div style={{ display: 'flex', alignItems: 'self-end' }}>
+          <TextField
+            label=""
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+
+          <SearchIcon
+            fontSize="medium"
+            onClick={onSearch}
+            style={{ paddingLeft: '5px', cursor: 'pointer' }}
+          >
+            Search
+          </SearchIcon>
         </div>
       </div>
+
       <Container maxWidth="70%" style={{ paddingTop: '150px' }}>
-        <h2
-          style={{ display: 'flex', justifyContent: 'center', fontWeight: 500 }}
+        {loader()}
+
+        <span
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            color: '#8c8e96',
+            fontSize: 'xxx-large',
+            fontFamily: 'ui-monospace',
+          }}
         >
-          You are currently viewing news about {term}
-        </h2>
-        <section>
+          YOU ARE CURRENTLY VIEWING NEWS ABOUT{' '}
+          <span
+            style={{
+              marginLeft: '10px',
+              color: '#f54480',
+              fontSize: 'xxx-large',
+            }}
+          >
+            {term}
+          </span>
+        </span>
+
+        <section class="section">
           {articles.map((article) => {
             const {
               abstract,
@@ -130,25 +156,63 @@ function News() {
               word_count,
             } = article
             return (
-              <article key={_id}>
-                <h2 style={{ background: '#6c7279', fontWeight: '400' }}>
+              <article className="articule" key={_id}>
+                <h2
+                  style={{
+                    fontWeight: '600',
+                    fontSize: 'xx-large ',
+                    fontFamily: 'fangsong',
+                    color: '#rgb(12 126 230)',
+                  }}
+                >
                   {main}
                 </h2>
-                <div style={{ backgroundColor: 'darkgray' }}>
-                  <p>{abstract}</p>
-                  <p>{lead_paragraph}</p>
+                <div>
+                  <p
+                    style={{
+                      fontFamily: 'inherit',
+                      color: 'te#0c64b5al',
+                      fontSize: 'large',
+                      fontWeight: 'bolder',
+                    }}
+                  >
+                    {abstract}
+                  </p>
+
+                  <p
+                    style={{
+                      fontFamily: '-webkit-body',
+                      color: '#32526e',
+                      fontSize: 'medium',
+                      fontWeight: '600',
+                    }}
+                  >
+                    {lead_paragraph}
+                  </p>
                 </div>
                 <p>
                   <span
                     onClick={() => setTerm(original)}
-                    style={{ cursor: 'pointer', borderBottom: '2px solid' }}
+                    style={{
+                      fontFamily: 'serif',
+                      fontSize: 'x-large',
+                      cursor: 'pointer',
+
+                      borderBottom: 'double',
+                    }}
                   >
                     {original}
                   </span>
                 </p>
                 <span
                   onClick={() => setTerm(section_name)}
-                  style={{ cursor: 'pointer', borderBottom: '2px solid' }}
+                  style={{
+                    fontFamily: 'sans-serif',
+                    fontSize: 'large',
+                    cursor: 'pointer',
+
+                    borderBottom: 'double',
+                  }}
                 >
                   Category: {section_name}
                 </span>
@@ -158,9 +222,12 @@ function News() {
                     href={web_url}
                     target="_blank"
                     style={{
-                      textDecoration: 'none',
-                      color: 'inherit',
-                      borderBottom: '2px solid',
+                      fontFamily: 'serif',
+                      fontSize: 'larger',
+                      cursor: 'pointer',
+                      color: '#f54480',
+
+                      // borderBottom: 'double',
                     }}
                   >
                     Source
@@ -171,6 +238,7 @@ function News() {
           })}
         </section>
       </Container>
+      <FooterNews />
     </>
   )
 }

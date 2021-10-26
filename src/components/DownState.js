@@ -77,7 +77,28 @@ function DownState() {
         </div>
       </div>
       <div className={classes.text}>
-        <div>
+        <li style={{ color: ' #FF8E53' }}>
+          <a href="#" style={{ textDecoration: 'none', color: ' #FE6B8B' }}>
+            About Us
+          </a>
+        </li>
+        <li style={{ color: ' #FF8E53' }}>
+          <a href="#" style={{ textDecoration: 'none', color: '#FE6B8B' }}>
+            Contribute
+          </a>
+        </li>
+        <li style={{ color: ' #FF8E53' }}>
+          <a href="#" style={{ textDecoration: 'none', color: ' #FE6B8B' }}>
+            Privacy Policy
+          </a>
+        </li>
+      </div>
+
+      <div className={classes.downDate}>
+        {' '}
+        ALL RIGHTS RESERVED | 2021 | HAND LIBRARY
+      </div>
+      {/* <div>
           {' '}
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
@@ -96,7 +117,7 @@ function DownState() {
       <div className={classes.downDate}>
         {' '}
         ALL RIGHTS RESERVED :2021: HAND LIBRUARY
-      </div>
+      </div> */}
     </div>
   )
 }

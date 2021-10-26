@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux'
 import { SIGN_IN_ROUTE } from './constantes/constants'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { selectHasAccount } from '../redux/hasAccountSlice'
+
 const useStyles = makeStyles((theme) => ({
   search: {
     display: 'flex',

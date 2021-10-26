@@ -10,11 +10,27 @@
 }
 
 .header {
-    width: 100%;
-    height: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #a1a8c8 0%, #ffffff 90%);
+    padding-left: 80px;
+    padding-right: 35px;
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    padding-bottom: 20px;
+    align-items: flex-end;
+}
+
+.articule {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    border-top-style: ridge;
+    margin-left: 50px;
+    margin-right: 50px;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
 }
 
 .header__inner {
@@ -25,7 +41,19 @@
     border-bottom: 1px solid #515369;
 }
 
+.section {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
 .nav {
+    margin-left: auto;
+    margin-right: 25px;
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
