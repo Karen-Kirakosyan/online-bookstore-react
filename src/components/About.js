@@ -2,6 +2,7 @@ import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 import DownState from './DownState'
+import Header from './Header'
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -58,6 +59,7 @@ function About() {
   const classes = useStyles()
   return (
     <>
+      <Header />
       <Container maxWidth="80%">
         <div className={classes.display}>
           <div className={classes.header}>About Us </div>

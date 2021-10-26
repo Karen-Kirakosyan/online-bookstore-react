@@ -15,7 +15,7 @@ import Book from './Book.js'
 function Main() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Switch>
         <Route exact path={HOME_ROUTE}>
           <Home />
