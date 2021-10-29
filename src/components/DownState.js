@@ -1,123 +1,66 @@
-import { Container, makeStyles } from '@material-ui/core'
-import React from 'react'
-import fbIcon from '../components/images/FB-icon.png'
-import instaIcon from '../components/images/Insta-icon.png'
-import logo from '../components/images/Logo-2.png'
-const useStyles = makeStyles(() => ({
-  header: {
-    backgroundColor: '#e1e0e0',
-    marginTop: '40px',
-  },
-  h1: {
-    fontSize: 'xx-large',
-    fontFamily: 'none',
-    marginLeft: '10px',
-  },
-  info: {
-    fontSize: 'medium',
-    fontFamily: 'cursive',
-    marginLeft: '20px',
-  },
-  downDate: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContentjustifyContent: 'space-between',
-    background: 'linear-gradient(60deg, #FE6B8B 40%, #FF8E53 90%)',
-    border: 5,
-    justifyContent: 'center',
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
-    height: 48,
-    padding: '20px 50px',
-    size: '200px',
-    marginTop: '20px',
-  },
+/* eslint-disable jsx-a11y/anchor-is-valid */
 
-  instaLogo: {
-    marginLeft: '15px',
-  },
-  logo: {
-    marginTop: '-50px',
-    marginLeft: '30px',
-  },
-  text: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginTop: '10px',
-    fontFamily: 'inherit',
-    fontSize: 'large',
-    marginLeft: '30px',
-  },
-  logos: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-  },
-  instaFb: {
-    marginRight: '150px',
-    marginTop: '15px',
-  },
-}))
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+import logo from '../components/images/Logo.png'
+import {
+  ABOUT_ROUTE,
+  BOOK_ROUTE,
+  HOME_ROUTE,
+  NEWS_ROUTE,
+} from './constantes/constants'
+import './downState.css'
+import FacebookIcon from '@material-ui/icons/Facebook'
+import InstagramIcon from '@material-ui/icons/Instagram'
+import TwitterIcon from '@material-ui/icons/Twitter'
+import GitHubIcon from '@material-ui/icons/GitHub'
 
 function DownState() {
-  const classes = useStyles()
-
   return (
-    <div className={classes.header}>
-      <div className={classes.logos}>
-        <img alt=" " className={classes.logo} src={logo} />{' '}
-        <div className={classes.instaFb}>
-          <a href=" ">
-            {' '}
-            <img alt=" " src={fbIcon} />
-          </a>
-          <a href=" ">
-            <img alt=" " src={instaIcon} className={classes.instaLogo} />
-          </a>
-        </div>
-      </div>
-      <div className={classes.text}>
-        <li style={{ color: ' #FF8E53' }}>
-          <a href="#" style={{ textDecoration: 'none', color: ' #FE6B8B' }}>
-            About Us
-          </a>
-        </li>
-        <li style={{ color: ' #FF8E53' }}>
-          <a href="#" style={{ textDecoration: 'none', color: '#FE6B8B' }}>
-            Contribute
-          </a>
-        </li>
-        <li style={{ color: ' #FF8E53' }}>
-          <a href="#" style={{ textDecoration: 'none', color: ' #FE6B8B' }}>
-            Privacy Policy
-          </a>
-        </li>
-      </div>
+    <div>
+      <footer class="footer-distributed">
+        <div class="footer-right">
+          <FacebookIcon
+            aria-label="Facebook.com"
+            onClick={() => window.open('https://www.facebook.com')}
+            fontSize="large"
+            style={{ cursor: 'pointer', color: '#443131' }}
+          />
 
-      <div className={classes.downDate}>
-        {' '}
-        ALL RIGHTS RESERVED | 2021 | HAND LIBRARY
-      </div>
-      {/* <div>
-          {' '}
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
-        </div>
-        <div>
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s,
-        </div>
-        <div>
-          {' '}
-          when an unknown printer took a galley of type and scrambled it to make
-          a type specimen book.
-        </div>{' '}
-      </div>
+          <InstagramIcon
+            color="secondary"
+            aria-label="Instagram.com"
+            onClick={() => window.open('https://www.instagram.com')}
+            fontSize="large"
+            style={{ cursor: 'pointer', color: '#443131' }}
+          />
 
-      <div className={classes.downDate}>
-        {' '}
-        ALL RIGHTS RESERVED :2021: HAND LIBRUARY
-      </div> */}
+          <TwitterIcon
+            aria-label="Twitter.com"
+            onClick={() => window.open('https://www.twitter.com')}
+            fontSize="large"
+            style={{ cursor: 'pointer', color: '#443131' }}
+          />
+          <GitHubIcon
+            aria-label="Github.com"
+            onClick={() => window.open('https://www.github.com')}
+            fontSize="large"
+            style={{ cursor: 'pointer', color: '#443131' }}
+          />
+        </div>
+        <div class="footer-left">
+          <img alt="" class="logo" src={logo} />
+          <p class="footer-links">
+            <Link to={HOME_ROUTE}>Home</Link>
+            <Link to={BOOK_ROUTE}>Books</Link>
+            <Link to={NEWS_ROUTE}>News</Link>
+            <Link to={ABOUT_ROUTE}>About</Link>{' '}
+          </p>
+
+          <p style={{ alignItems: 'center' }}>Hand Library &copy; 2021</p>
+        </div>
+      </footer>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Switch, Route, useHistory } from 'react-router-dom'
+import { BrowserRouter as Switch, Route } from 'react-router-dom'
 import {
   HOME_ROUTE,
   ABOUT_ROUTE,
@@ -10,10 +10,6 @@ import {
   SIGN_UP_ROUTE,
 } from './components/constantes/constants'
 import Main from './components/Main'
-import fire from './fire'
-import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { editHasAccount } from './redux/hasAccountSlice'
 import Book from './components/Book'
 import Auth from './components/Auth/Auth'
 

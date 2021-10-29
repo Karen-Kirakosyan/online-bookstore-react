@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
@@ -7,15 +7,11 @@ import Toolbar from '@material-ui/core/Toolbar'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined'
-import { Button, Container } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 import logo from '../components/images/Logo.png'
-import logo2 from '../components/images/Logo-2.png'
 import {
   HOME_ROUTE,
   ABOUT_ROUTE,
@@ -27,7 +23,6 @@ import {
 } from './constantes/constants'
 import fire from '../fire'
 import { useDispatch, useSelector } from 'react-redux'
-import { editSignPath } from '../redux/pathSlice'
 import { editHasAccount, selectHasAccount } from '../redux/hasAccountSlice'
 import { Link } from 'react-router-dom'
 
@@ -161,8 +156,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   const classes = useStyles()
-  const theme = useTheme()
-  // const [open, setOpen] = useState(false)
 
   const history = useHistory()
   const hasAccount = useSelector(selectHasAccount)
@@ -172,34 +165,10 @@ function Header() {
     fire.auth().signOut()
     dispatch(editHasAccount(false))
   }
-  // const handleDrawerOpen = () => {
-  //   setOpen(true)
-  // }
-
-  // const handleDrawerClose = () => {
-  //   setOpen(false)
-  // }
 
   const onSignin = () => {
     history.push(SIGN_IN_ROUTE)
   }
-
-  // const onSignup = () => {
-  //   history.push(SIGN_UP_ROUTE)
-  // }
-
-  // const onHomeRoute = () => {
-  //   history.push(HOME_ROUTE)
-  // }
-  // const onAboutRoute = () => {
-  //   history.push(ABOUT_ROUTE)
-  // }
-  // const onNewsRoute = () => {
-  //   history.push(NEWS_ROUTE)
-  // }
-  // const onBooksRoute = () => {
-  //   history.push(BOOK_ROUTE)
-  // }
 
   const logoClick = () => {
     history.push(HOME_ROUTE)
@@ -259,23 +228,9 @@ function Header() {
               </Button>
             )}
           </div>
-
-          {/* <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="end"
-            onClick={handleDrawerOpen}
-            className={clsx(open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton> */}
         </Toolbar>
       </AppBar>
-      <main
-        className={clsx(classes.content, {
-          // [classes.contentShift]: open,
-        })}
-      />
+      <main className={clsx(classes.content, {})} />
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -286,24 +241,9 @@ function Header() {
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton>
-            {/* {theme.direction === 'rtl' ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )} */}
-          </IconButton>
+          <IconButton></IconButton>
         </div>
-        {/* <Container fixed style={{ display: 'flex', flexDirection: 'column' }}>
-          <img alt="" className={classes.logo2} src={logo2} />
-          <p className={classes.text}>Find your favorit book hear</p>
 
-          <Button className={classes.collectionsButton}>Home</Button>
-          <Button className={classes.collectionsButton}>Books</Button>
-
-          <Button className={classes.collectionsButton}>News</Button>
-          <Button className={classes.collectionsButton}>About</Button>
-        </Container> */}
         <Divider />
       </Drawer>
     </div>
