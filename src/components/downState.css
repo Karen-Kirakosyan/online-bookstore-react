@@ -3,7 +3,8 @@
     font-family: Roboto;
 }
 
-section {
+
+/* section {
     width: 100%;
     display: inline-block;
     background: #ccc;
@@ -12,7 +13,7 @@ section {
     font-size: 22px;
     font-weight: 700;
     text-decoration: underline;
-}
+} */
 
 .footer-distributed {
     background: linear-gradient(286deg, #FE6B8B 40%, #FF8E53 90%);

@@ -8,7 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined'
-import { Button } from '@material-ui/core'
+import { Button, useMediaQuery } from '@material-ui/core'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 import logo from '../components/images/Logo.png'
@@ -160,7 +160,7 @@ function Header() {
   const history = useHistory()
   const hasAccount = useSelector(selectHasAccount)
   const dispatch = useDispatch()
-
+  const matches = useMediaQuery('(min-width: 730px)')
   const onSignout = () => {
     fire.auth().signOut()
     dispatch(editHasAccount(false))
@@ -187,13 +187,15 @@ function Header() {
         <Toolbar className={classes.toolBar}>
           <a href={HOME_ROUTE}>
             {' '}
-            <img
-              className={classes.logo}
-              cursor="pointer"
-              onClick={logoClick}
-              alt=""
-              src={logo}
-            />{' '}
+            {matches ? (
+              <img
+                className={classes.logo}
+                cursor="pointer"
+                onClick={logoClick}
+                alt=""
+                src={logo}
+              />
+            ) : undefined}
           </a>
           <div className={classes.linksAndLogin}>
             <Link className={classes.collectionLinks} to={HOME_ROUTE}>

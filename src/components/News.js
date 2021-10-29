@@ -1,11 +1,15 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
+import DownState from './DownState'
+import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
 import './News.css'
+import { TramOutlined } from '@material-ui/icons'
 import SearchIcon from '@material-ui/icons/Search'
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import newsLogo from '../components/images/newslogo.png'
 import { Link } from 'react-router-dom'
 import { HOME_ROUTE } from './constantes/constants'
@@ -17,6 +21,8 @@ function News() {
   const [isLoading, setIsLoading] = useState([true])
   const [searchValue, setSearchValue] = useState('')
   const [loading, setloading] = useState(true)
+  const matches = useMediaQuery('(min-width: 1072px)');
+
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -25,11 +31,9 @@ function News() {
           `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${term}&api-key=Eo9DgGPykvV9HUjuYefUOnwlaT7FI9kT`,
         )
         const articles = await res.json()
-        console.log(articles)
         setArticles(articles.response.docs)
         setloading(false)
       } catch (error) {
-        console.log(error)
       }
     }
     fetchArticles()
@@ -47,7 +51,6 @@ function News() {
             marginTop: '200px',
           }}
         >
-          <div class="main-header pad-top wrapper" id="mainHeader"></div>
 
           <div
             class="main-content space-top wrapper"
@@ -75,7 +78,7 @@ function News() {
   return (
     <>
       <div class="header">
-        <img style={{ marginTop: '20px' }} alt="" src={newsLogo} />
+        {matches ? (<img style={{ marginTop: '20px' }} alt="" src={newsLogo} />) : (<></>)}
         <nav class="nav">
           <Link class="nav__link" to={HOME_ROUTE}>
             Home
@@ -84,13 +87,7 @@ function News() {
             Latest
           </a>
           <a class="nav__link" href="#" onClick={() => setTerm('Politics')}>
-            Politics{' '}
-          </a>
-          <a class="nav__link" href="#" onClick={() => setTerm('Economy')}>
-            Economy
-          </a>
-          <a class="nav__link" href="#" onClick={() => setTerm('Future')}>
-            Future
+            Politics
           </a>
           <a class="nav__link" href="#" onClick={() => setTerm('Culture')}>
             Culture
@@ -115,23 +112,13 @@ function News() {
       <Container maxWidth="70%" style={{ paddingTop: '150px' }}>
         {loader()}
 
-        <span
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            color: '#8c8e96',
-            fontSize: 'xxx-large',
-            fontFamily: 'ui-monospace',
-          }}
-        >
+        <span class="articleHeader">
           YOU ARE CURRENTLY VIEWING NEWS ABOUT{' '}
           <span
             style={{
               marginLeft: '10px',
               color: '#f54480',
-              fontSize: 'xxx-large',
+              fontSize: "inherit",
             }}
           >
             {term}
@@ -157,7 +144,7 @@ function News() {
                   style={{
                     fontWeight: '600',
                     fontSize: 'xx-large ',
-                    fontFamily: 'ui-monospace',
+                    fontFamily: 'fangsong',
                     color: '#rgb(12 126 230)',
                   }}
                 >
@@ -166,7 +153,7 @@ function News() {
                 <div>
                   <p
                     style={{
-                      fontFamily: 'ui-monospace',
+                      fontFamily: 'inherit',
                       color: 'te#0c64b5al',
                       fontSize: 'large',
                       fontWeight: 'bolder',
@@ -177,7 +164,7 @@ function News() {
 
                   <p
                     style={{
-                      fontFamily: 'ui-monospace',
+                      fontFamily: '-webkit-body',
                       color: '#32526e',
                       fontSize: 'medium',
                       fontWeight: '600',
@@ -190,7 +177,7 @@ function News() {
                   <span
                     onClick={() => setTerm(original)}
                     style={{
-                      fontFamily: 'ui-monospace',
+                      fontFamily: 'serif',
                       fontSize: 'x-large',
                       cursor: 'pointer',
 
@@ -203,7 +190,7 @@ function News() {
                 <span
                   onClick={() => setTerm(section_name)}
                   style={{
-                    fontFamily: 'ui-monospace',
+                    fontFamily: 'sans-serif',
                     fontSize: 'large',
                     cursor: 'pointer',
 
