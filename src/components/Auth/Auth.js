@@ -14,7 +14,6 @@
 // import Container from '@material-ui/core/Container'
 
 // import { useDispatch, useSelector } from 'react-redux'
-// import { editSignPath, selectSignPath } from '../redux/pathSlice'
 
 // function Copyright(props) {
 //   return (
