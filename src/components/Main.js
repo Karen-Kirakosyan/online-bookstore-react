@@ -9,13 +9,12 @@ import {
   NEWS_ROUTE,
   BOOK_ROUTE,
 } from './constantes/constants'
-import Header from './Header'
+
 import Book from './Book.js'
 
 function Main() {
   return (
     <>
-      {/* <Header /> */}
       <Switch>
         <Route exact path={HOME_ROUTE}>
           <Home />

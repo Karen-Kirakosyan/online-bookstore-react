@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+/* eslint-disable no-unused-vars */
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
 import './Auth.css'
 import { useHistory } from 'react-router'
 import { SIGN_UP_ROUTE } from '../constantes/constants'
-import Container from '@material-ui/core/Container'
 
 const useStyles = makeStyles((theme) => ({
   root: {

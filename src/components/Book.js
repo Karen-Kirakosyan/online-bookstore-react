@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Header from './Header'
@@ -10,7 +11,6 @@ import { Button, TextField } from '@material-ui/core'
 import Container from '@material-ui/core/Container'
 import './Books.css'
 import GetAppTwoToneIcon from '@material-ui/icons/GetAppTwoTone'
-import Serlector from './Selector'
 import { useSelector } from 'react-redux'
 import { SIGN_IN_ROUTE } from './constantes/constants'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'

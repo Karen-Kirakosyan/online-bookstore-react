@@ -1,5 +1,6 @@
 import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
+import { queries } from '@testing-library/react'
 import React from 'react'
 import DownState from './DownState'
 import Header from './Header'
@@ -22,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)',
     width: '600px',
     height: '400px',
+    '@media (max-width: 1100px)': {
+      width: '400px',
+      height: '200px',
+      marginLeft: '0px',
+    },
   },
   pic2: {
     borderRadius: '60px',
@@ -29,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)',
     width: '600px',
     height: '400px',
+    '@media (max-width: 1100px)': {
+      width: '400px',
+      height: '200px',
+    },
   },
   display: {
     display: 'flex',
@@ -48,10 +58,22 @@ const useStyles = makeStyles((theme) => ({
   style: {
     display: 'flex',
     alignItems: 'center',
+    '@media (max-width: 1100px)': {
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+    },
   },
   pic2Style: {
     display: 'flex',
     marginRight: '80px',
+    '@media (max-width: 1100px)': {
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
   },
 }))
 

@@ -1,15 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
-import DownState from './DownState'
-import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
 import './News.css'
-import { TramOutlined } from '@material-ui/icons'
 import SearchIcon from '@material-ui/icons/Search'
-
 import newsLogo from '../components/images/newslogo.png'
 import { Link } from 'react-router-dom'
 import { HOME_ROUTE } from './constantes/constants'
@@ -161,7 +157,7 @@ function News() {
                   style={{
                     fontWeight: '600',
                     fontSize: 'xx-large ',
-                    fontFamily: 'fangsong',
+                    fontFamily: 'ui-monospace',
                     color: '#rgb(12 126 230)',
                   }}
                 >
@@ -170,7 +166,7 @@ function News() {
                 <div>
                   <p
                     style={{
-                      fontFamily: 'inherit',
+                      fontFamily: 'ui-monospace',
                       color: 'te#0c64b5al',
                       fontSize: 'large',
                       fontWeight: 'bolder',
@@ -181,7 +177,7 @@ function News() {
 
                   <p
                     style={{
-                      fontFamily: '-webkit-body',
+                      fontFamily: 'ui-monospace',
                       color: '#32526e',
                       fontSize: 'medium',
                       fontWeight: '600',
@@ -194,7 +190,7 @@ function News() {
                   <span
                     onClick={() => setTerm(original)}
                     style={{
-                      fontFamily: 'serif',
+                      fontFamily: 'ui-monospace',
                       fontSize: 'x-large',
                       cursor: 'pointer',
 
@@ -207,7 +203,7 @@ function News() {
                 <span
                   onClick={() => setTerm(section_name)}
                   style={{
-                    fontFamily: 'sans-serif',
+                    fontFamily: 'ui-monospace',
                     fontSize: 'large',
                     cursor: 'pointer',
 

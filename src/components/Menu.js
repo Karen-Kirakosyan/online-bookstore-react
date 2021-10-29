@@ -18,7 +18,6 @@ import {
   ABOUT_ROUTE,
   NEWS_ROUTE,
   SIGN_IN_ROUTE,
-  SIGN_UP_ROUTE,
 } from './constantes/constants'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
@@ -34,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContentjustifyContent: 'space-between',
     background: 'linear-gradient(45deg, #FE6B8B 40%, #FF8E53 90%)',
     border: 5,
-    justifyContent: 'center',
+
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
     height: 48,
@@ -76,7 +75,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
   },
   drawerHeader: {
-    justifyContent: 'space-between',
     display: 'flex',
     alignItems: 'center',
     justifyContentjustifyContent: 'space-between',
@@ -88,12 +86,6 @@ const useStyles = makeStyles((theme) => ({
     height: 48,
     padding: '20px 50px',
     size: '200px',
-    // display: 'flex',
-    // alignItems: 'center',
-    // padding: theme.spacing(0, 1),
-    // // necessary for content to be below app bar
-    // ...theme.mixins.toolbar,
-    // justifyContent: 'flex-start',
   },
   content: {
     flexGrow: 1,
@@ -141,8 +133,6 @@ export default function PersistentDrawerRight() {
         })}
       >
         <Toolbar className={classes.toolBar}>
-          {/* <h2 className={classes.h2}>Hend Libruary</h2> */}
-
           <Link className={classes.link} to={HOME_ROUTE}>
             Home
           </Link>
