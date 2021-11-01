@@ -1,15 +1,13 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
-import DownState from './DownState'
-import { makeStyles } from '@material-ui/core/styles'
+
 import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+
 import Container from '@material-ui/core/Container'
 import './News.css'
-import { TramOutlined } from '@material-ui/icons'
 import SearchIcon from '@material-ui/icons/Search'
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import newsLogo from '../components/images/newslogo.png'
 import { Link } from 'react-router-dom'
 import { HOME_ROUTE } from './constantes/constants'
@@ -18,11 +16,9 @@ import FooterNews from './newsFooter'
 function News() {
   const [articles, setArticles] = useState([])
   const [term, setTerm] = useState('all')
-  const [isLoading, setIsLoading] = useState([true])
   const [searchValue, setSearchValue] = useState('')
   const [loading, setloading] = useState(true)
-  const matches = useMediaQuery('(min-width: 1072px)');
-
+  const matches = useMediaQuery('(min-width: 1072px)')
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -33,8 +29,7 @@ function News() {
         const articles = await res.json()
         setArticles(articles.response.docs)
         setloading(false)
-      } catch (error) {
-      }
+      } catch (error) {}
     }
     fetchArticles()
   }, [term])
@@ -51,7 +46,6 @@ function News() {
             marginTop: '200px',
           }}
         >
-
           <div
             class="main-content space-top wrapper"
             role="main"
@@ -78,7 +72,11 @@ function News() {
   return (
     <>
       <div class="header">
-        {matches ? (<img style={{ marginTop: '20px' }} alt="" src={newsLogo} />) : (<></>)}
+        {matches ? (
+          <img style={{ marginTop: '20px' }} alt="" src={newsLogo} />
+        ) : (
+          <></>
+        )}
         <nav class="nav">
           <Link class="nav__link" to={HOME_ROUTE}>
             Home
@@ -118,7 +116,7 @@ function News() {
             style={{
               marginLeft: '10px',
               color: '#f54480',
-              fontSize: "inherit",
+              fontSize: 'inherit',
             }}
           >
             {term}
@@ -132,11 +130,10 @@ function News() {
               headline: { main },
               byline: { original },
               lead_paragraph,
-              news_desk,
+
               section_name,
               web_url,
               _id,
-              word_count,
             } = article
             return (
               <article className="articule" key={_id}>

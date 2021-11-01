@@ -3,18 +3,6 @@
     font-family: Roboto;
 }
 
-
-/* section {
-    width: 100%;
-    display: inline-block;
-    background: #ccc;
-    height: 60vh;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 700;
-    text-decoration: underline;
-} */
-
 .footer-distributed {
     background: linear-gradient(286deg, #FE6B8B 40%, #FF8E53 90%);
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -117,5 +105,10 @@
     }
     .footer-distributed .footer-left p.footer-links {
         line-height: 1.8;
+        margin-left: 115px;
+    }
+    .logo {
+        width: 400px;
+        margin-left: 40px;
     }
 }
