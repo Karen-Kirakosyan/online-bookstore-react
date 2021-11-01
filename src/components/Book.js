@@ -22,9 +22,29 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     marginRight: '250px',
     marginTop: '60px',
+    '@media (max-width: 850px)': {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      marginRight: '0px',
+
+      marginTop: '60px',
+    },
   },
   textField: {
     marginLeft: 'auto',
+  },
+  Container: {
+    textAlign: 'center',
+    '@media (max-width: 850px)': {
+      display: 'flex',
+
+      flexDirection: 'column',
+      paddingRight: '0px',
+
+      width: '366px',
+
+      paddingLeft: '0px',
+    },
   },
 }))
 
@@ -36,6 +56,7 @@ function Book() {
   const classes = useStyles()
   const hasAccount = useSelector(selectHasAccount)
   const history = useHistory()
+
   useEffect(() => {
     const fetchBooks = async () => {
       const res = await axios.get(
@@ -87,7 +108,7 @@ function Book() {
           <SearchIcon onClick={onSearch} />{' '}
         </Button>
       </div>
-      <Container maxWidth="80%" style={{ textAlign: 'center' }}>
+      <Container maxWidth="80%" className={classes.Container}>
         <h1>Bestsellers of this week</h1>
         <h2>According to NYT</h2>
         {filteredBooks.map((book) => {
@@ -103,6 +124,7 @@ function Book() {
           return (
             <>
               <div
+                class=""
                 style={{
                   display: 'inline-grid',
                   margin: '15px',
@@ -113,7 +135,7 @@ function Book() {
                 <div class="card">
                   <div class="content">
                     <div class="front">
-                      <img alt="" src={book_image} />
+                      <img alt="" src={book_image} class="img" />
                     </div>
                     <div
                       class="back"

@@ -1,6 +1,5 @@
 import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import { queries } from '@testing-library/react'
 import React from 'react'
 import DownState from './DownState'
 import Header from './Header'

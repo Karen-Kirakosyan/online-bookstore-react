@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -16,10 +16,8 @@ import {
   HOME_ROUTE,
   ABOUT_ROUTE,
   NEWS_ROUTE,
-  AUTH_ROUTE,
   BOOK_ROUTE,
   SIGN_IN_ROUTE,
-  SIGN_UP_ROUTE,
 } from './constantes/constants'
 import fire from '../fire'
 import { useDispatch, useSelector } from 'react-redux'

@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 import pic from '../components/images/1.jpg'
 import pic1 from '../components/images/book-pic.jpg'
-import text from '../components/images/text.png'
+
 import Header from './Header'
 import DownState from './DownState'
 import Container from '@material-ui/core/Container'

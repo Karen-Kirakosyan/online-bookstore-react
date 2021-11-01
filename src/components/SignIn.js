@@ -1,41 +1,19 @@
-import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+import React from 'react'
+
 import './Auth.css'
 import { useHistory } from 'react-router'
 import { SIGN_UP_ROUTE } from '../constantes/constants'
-import Container from '@material-ui/core/Container'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-  button: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-}))
 
 export default function Auth(props) {
   const {
-    email,
     setEmail,
-    password,
     setPassword,
     handleLogin,
-    handleSignup,
-    hasAccount,
-    setHasAccount,
+
     emailError,
     passwordError,
   } = props
 
-  const classes = useStyles()
   const history = useHistory()
   const onEmailType = (e) => {
     setEmail(e.target.value)
